@@ -71,7 +71,14 @@ def play_game():
         if won:
             display_game_state(mistakes, secret_word, guessed_letters)
             print("You won! You saved the snowman! The word was:", secret_word)
-            return
+
+            # Benutzer fragen, ob er nochmal spielen will
+            replay = input("Do you want to play again? (y/n): ").lower().strip()
+            if replay == 'y':
+                play_game()
+            else:
+                print("Thanks for playing! Goodbye!")
+                return
 
     # sonst Verloren- auch Spiel beenden und das geheime Wort anzeigen
     display_game_state(mistakes, secret_word, guessed_letters)
@@ -83,6 +90,3 @@ def play_game():
         play_game()
     else:
         print("Thanks for playing! Goodbye!")
-
-if __name__ == "__main__":
-    play_game()
