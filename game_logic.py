@@ -12,6 +12,7 @@ def get_random_word():
     """Selects a random word from the list."""
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
+
 def display_game_state(mistakes, secret_word, guessed_letters):
     """Zeigt den aktuellen Zustand des Spiels an."""
 
@@ -26,6 +27,7 @@ def display_game_state(mistakes, secret_word, guessed_letters):
             display_word += "_ "
     print("Word: ", display_word)
     print("\n")
+
 
 def play_game():
     """Haiptspiel-Logik für Snowman Meltdown."""
@@ -72,21 +74,9 @@ def play_game():
             display_game_state(mistakes, secret_word, guessed_letters)
             print("You won! You saved the snowman! The word was:", secret_word)
 
-            # Benutzer fragen, ob er nochmal spielen will
-            replay = input("Do you want to play again? (y/n): ").lower().strip()
-            if replay == 'y':
-                play_game()
-            else:
-                print("Thanks for playing! Goodbye!")
-                return
+            # Benutzer fragen, ob er nochmal spielen will, in ine separate Funktion
+            return
 
     # sonst Verloren- auch Spiel beenden und das geheime Wort anzeigen
     display_game_state(mistakes, secret_word, guessed_letters)
     print("You lost! The snowman melted! The word was:", secret_word)
-
-    # Benutzer fragen, ob er nochmal spielen will
-    replay = input("Do you want to play again? (y/n): ").lower().strip()
-    if replay == 'y':
-        play_game()
-    else:
-        print("Thanks for playing! Goodbye!")
